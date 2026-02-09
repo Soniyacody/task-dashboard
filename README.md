@@ -4,7 +4,7 @@
 A responsive task management application built with React and TypeScript, featuring real-time analytics and persistent storage.
 
 ## 🚀 Live Demo
-[Netlify Deployment URL](#) *(Add your URL here)*
+[Netlify Deployment URL](#) *(https://task-dashboard100.netlify.app/)*
 
 ## 🛠️ Tech Stack
 - **React 18** + **TypeScript**
