@@ -1,20 +1,19 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 import type { Task, Status } from '../types/task';
+import '../styles.css';
 
 interface TaskListProps {
     tasks: Task[];
-    editingTaskId: string | null;
-    onEditTask: (task: Task) => void;
-    onDeleteTask: (id: string) => void;
+    onEdit: (id: string, updates: Partial<Task>) => void; // FIXED: This should match TaskItem's onEdit
+    onDelete: (id: string) => void;
     onStatusChange: (id: string, status: Status) => void;
 }
 
 const TaskList: React.FC<TaskListProps> = ({
     tasks,
-    editingTaskId,
-    onEditTask,
-    onDeleteTask,
+    onEdit,
+    onDelete,
     onStatusChange
 }) => {
     if (tasks.length === 0) {
@@ -29,15 +28,14 @@ const TaskList: React.FC<TaskListProps> = ({
 
     return (
         <div className="card p-4">
-            <ul>
+            <ul className="task-list">
                 {tasks.map((task) => (
                     <TaskItem
                         key={task.id}
                         task={task}
-                        onEdit={onEditTask}
-                        onDelete={onDeleteTask}
+                        onEdit={onEdit}  // This now matches the correct type
+                        onDelete={onDelete}
                         onStatusChange={onStatusChange}
-                        isEditing={editingTaskId === task.id}
                     />
                 ))}
             </ul>
